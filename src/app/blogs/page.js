@@ -1,15 +1,16 @@
 'use client'
-import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 
-const page = async () => {
+const page = () => {
+    const [userInfo, setUserInfo] = useState();
     const getBlogs = async () =>{
         try 
         {
-            const res = await axios.get('/api/create');
-            const blogs = res.data.blogs;
+            const res = await fetch('/api/create' , { cache: 'no-store' });
+            const data = await res.json();
+            const blogs = data.blogs;
             console.log(blogs);
-            return blogs;
+            setUserInfo(blogs);
         }
         catch(error)
         {
@@ -20,6 +21,12 @@ const page = async () => {
     <div>
         Blogs
         <button onClick={getBlogs}> Get Blogs </button>
+        {
+            userInfo && userInfo.map((elem)=>(
+                <p key={elem._id}> {elem.title} </p>
+            ))
+        }
+        <p> {userInfo?.title} </p>
     </div>
   )
 }
