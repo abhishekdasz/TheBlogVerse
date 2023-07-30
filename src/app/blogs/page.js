@@ -1,13 +1,19 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 
 const Page = () => {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    setShowButton(true);
+  }, []);
+
   const getBlogs = async () => {
     try {
-      const res = await fetch('/api/create', { cache:'no-store' });
+      const res = await fetch('/api/create', { cache: 'no-store' });
       const data = await res.json();
       const blogs = data.blogs;
       console.log(blogs);
-      return blogs;
     } catch (error) {
       console.log(error);
     }
@@ -16,7 +22,7 @@ const Page = () => {
   return (
     <div>
       Blogs
-      <button onClick={getBlogs}>Get Blogs</button>
+      {showButton && <button onClick={getBlogs}>Get Blogs</button>}
     </div>
   );
 };
