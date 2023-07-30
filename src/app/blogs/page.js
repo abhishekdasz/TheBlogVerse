@@ -48,7 +48,7 @@ const page = () => {
         Blogs
         <form onSubmit={handleSubmit} >
             <input type="text" name='title' value={blogsData.title} onChange={handleInputs} />
-            <textarea name="description" value={blogsData.description} onChange={handleInputs}>  </textarea>
+            <textarea name="description" value={blogsData.description} onChange={handleInputs}/>
             <button> Submit </button>
         </form>
         <button onClick={getBlogs}> Get Blogs </button>
