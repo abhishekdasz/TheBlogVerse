@@ -3,3 +3,279 @@
   margin: 0;
   padding: 0;
 }
+
+
+/* Styling for the Registration Page */
+.reg-sec , .login-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #292b2f; /* Dark background color */
+}
+
+.reg-container, .login-container {
+  max-width: 600px; /* Increased max-width for a bigger container */
+  background-color: #3c3f43; /* Dark container background color */
+  padding: 30px; /* Increased padding for more spacing */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.inputs
+{
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  gap: 0.6rem;
+}
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"] {
+  width: 18rem;
+  padding: 15px; /* Increased padding for input fields */
+  border: none;
+  background-color: #202124; /* Dark input background color */
+  color: #fff; /* White text color */
+  border-radius: 5px;
+  font-size: 16px; /* Increased font size for better readability */
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="phone"]::placeholder,
+input[type="password"]::placeholder {
+  color: #ccc; /* Light placeholder text color */
+}
+
+button {
+  padding: 15px; /* Increased padding for buttons */
+  border: none;
+  background-color: #7289da; /* Discord theme color (You can change it to any other color you prefer) */
+  color: #fff; /* White text color */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #5a68a1; /* Darker shade on hover */
+}
+.already 
+{
+  color: #fff;
+  margin-top: 1rem;
+}
+.already a 
+{
+  color: #007bff;
+}
+/* Optional: Center the form horizontally on larger screens */
+@media (min-width: 768px) {
+  .reg-container {
+    margin: 0 auto;
+  }
+}
+
+
+
+
+
+
+/* Styling for the Blogs Page */
+.all-blogs-sec {
+  min-height: 100vh;
+  background-color: #292b2f; 
+  color: #fff;
+}
+.all-blogs-container
+{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.all-blogs-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.all-blogs-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.all-blogs-navigation a {
+  padding: 10px 15px;
+  color: #7289da; 
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.all-blogs-navigation a:hover {
+  background-color: #7289da; 
+  opacity: 0.8;
+  color: #fff;
+}
+
+.all-blogs-cards {
+  display: grid;
+  gap: 20px;
+}
+
+/* Styling for the BlogsCard component */
+.blog-card {
+  background-color: #3c3f43; /* Dark card background color */
+  color: #fff; /* White text color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.blog-user-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-post {
+  margin-top: 15px;
+}
+
+.blog-btns {
+  margin-top: 15px;
+}
+.blog-btns a
+{
+  text-decoration: none;
+}
+
+.blog-btns .button {
+  font-size: 1rem;
+  padding: 8px 16px;
+  background-color: #7289da; 
+  color: #fff; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+.blog-btns .button:hover {
+  background-color: #5a68a1; 
+  opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styling for the Create Blog Page */
+.create-edit-blog-sec {
+  min-height: 100vh;
+  background-color: #292b2f; /* Dark background color */
+  color: #fff; /* White text color */
+  padding: 20px;
+}
+
+.create-edit-blog-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #3c3f43; /* Dark container background color */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.create-edit-blog-container h2 {
+  margin-bottom: 10px;
+}
+
+.create-edit-blog-container p {
+  margin-bottom: 20px;
+  line-height: 1.5rem;
+}
+
+.create-edit-blog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-edit-blogs-inputs
+{
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.create-edit-blogs-inputs label {
+  font-weight: bold;
+}
+
+.create-edit-blogs-inputs input[type="text"],
+.create-edit-blogs-inputs textarea {
+  padding: 10px;
+  border: none;
+  background-color: #202124; /* Dark input background color */
+  color: #fff; /* White text color */
+  border-radius: 5px;
+  font-size: 16px;
+  resize: vertical;
+  width: 96%;
+}
+
+.create-edit-blogs-inputs textarea {
+  min-height: 200px;
+}
+
+.create-edit-blog-btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.create-edit-blog-btns .create-edit-btn {
+  padding: 10px 20px;
+  background-color: #7289da; /* Discord theme color (You can change it to any other color you prefer) */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-edit-blog-btns .create-edit-btn:hover {
+  background-color: #5a68a1; /* Darker shade on hover */
+  opacity: 0.8;
+}
+
+
+
+
+

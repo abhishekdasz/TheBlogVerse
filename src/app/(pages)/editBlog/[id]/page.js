@@ -45,17 +45,21 @@ const page = ({params}) => {
         getSingleBlogDetails();
     },[])
   return (
-    <div className='edit-blog-sec'>
-        <div className="edit-blog-container">
-            <form onSubmit={handleUpdate}>
-                <div className="input">
+    <div className='create-edit-blog-sec'>
+        <div className="create-edit-blog-container">
+            <h2> Edit Your Blog Post </h2>
+            <p> Revise and enhance your existing blog post with new ideas and updates. Edit your blog title and content below, and click 'Update Blog' to save your changes and share your updated post with the world. </p>
+            <form onSubmit={handleUpdate} className='create-edit-blog-form'>
+                <div className="create-edit-blogs-inputs">
                     <input type="text"  name='title' value={inputs.title} onChange={handleInputs}/>
                 </div>
-                <div className='input'>
+                <div className='create-edit-blogs-inputs'>
                     <textarea name='description' value={inputs.description} onChange={handleInputs}/>
                 </div>
-                <button> Update </button>
-                <Link href='/blogs' className='button'> Cancel </Link> 
+                <div className="create-edit-blog-btns">
+                    <button className='create-edit-btn'> Update </button>
+                    <Link href='/blogs' className='create-edit-btn'> Cancel </Link> 
+                </div>
             </form>
         </div>
     </div>

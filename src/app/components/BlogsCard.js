@@ -20,14 +20,14 @@ const BlogsCard = (props) => {
         }
     }
   return (
-    <div className='blogs-card'>
+    <div className='blog-card'>
         <div className="blog-user-details">
-            <p> {username} </p>
+            <p> Author: {username} </p>
             <p> Created at: {createdAt} </p>
         </div>
         
         <div className="blog-post">
-            <h5> Title: {title} </h5>
+            <h3> Title: {title} </h3>
             <p> Description: {description} </p>
         </div>
         
@@ -35,9 +35,9 @@ const BlogsCard = (props) => {
             {
             isUser && 
             ( 
-                <div>
-                    <Link href={`/editBlog/${id}`}>edit</Link> 
-                    <button onClick={handleDelete}> delete </button>
+                <div className='user-btns'>
+                    <Link className='button' href={`/editBlog/${id}`}>edit</Link> 
+                    <button className='button' onClick={handleDelete}> delete </button>
                 </div> 
             )
             }
@@ -47,4 +47,4 @@ const BlogsCard = (props) => {
   )
 }
 
-export default BlogsCard
+export default BlogsCard;

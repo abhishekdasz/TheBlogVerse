@@ -21,11 +21,13 @@ const page = () => {
     };
 
     const [loginUserId, setLoginUserId] = useState();
+    const [loginUsername, setLoginUsername] = useState();
     const handleLoginUser = async () =>{
         try 
         {
             const res = await axios.get('/api/loginUserDetails');
-            setLoginUserId(res.data.data._id)
+            setLoginUserId(res.data.data._id);
+            setLoginUsername(res.data.data.username);
             console.log(res.data.data._id);
         }
         catch(error)
@@ -40,18 +42,23 @@ const page = () => {
     },[])
  
   return (
-    <div>
-        Blogs
-        <Link href='/newBlog'> Create Your New Blog </Link>
-        
-        {
+    <div className='all-blogs-sec'>
+        <div className="all-blogs-container">
+            <h1> Hey {loginUsername}, Discover amazing blogs! </h1>
+        <div className="all-blogs-navigation">
+            <Link href='/newBlog'> Create Your New Blog </Link>
+            <Link href='/'> Back to Home </Link>
+        </div>
+        <div className="all-blogs-cards">
+            {
             userInfo && userInfo.map((elem)=>(
-                <BlogsCard key={elem._id} id={elem._id} username={elem.username} title={elem.title} description={elem.description} isUser={elem.userInfo?._id === loginUserId} createdAt={elem.createdAt} refreshBlogs={getBlogs} /> 
+                <BlogsCard key={elem._id} id={elem._id} username={elem.userInfo?.username} title={elem.title} description={elem.description} isUser={elem.userInfo?._id === loginUserId} createdAt={elem.createdAt} refreshBlogs={getBlogs} /> 
             ))
-        }
-        <p> {userInfo?.title} </p>
+            }
+        </div>
+        </div>
     </div>
   )
 }
 
-export default page
+export default page;

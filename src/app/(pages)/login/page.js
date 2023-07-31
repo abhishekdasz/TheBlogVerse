@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const page = () => {
   const router = useRouter();
@@ -40,11 +41,18 @@ const page = () => {
   return (
     <div className='login-sec'>
       <div className="login-container">
-        <form onSubmit={handleLogin}>
-          <input type="email" name='email' value={user.email} onChange={handleInputs} placeholder='Enter your Email'  />
-          <input type="pwd"   name='pwd'   value={user.pwd}   onChange={handleInputs} placeholder='Enter your Password' />
+        <form onSubmit={handleLogin} className='form'>
+          <div className='inputs'>
+            <label> Email:    </label>
+            <input type="email"    name='email' value={user.email} onChange={handleInputs} placeholder='Enter your Email'  />
+          </div>
+          <div className="inputs">
+            <label> Password: </label>
+            <input type="password" name='pwd'   value={user.pwd}   onChange={handleInputs} placeholder='Enter your Password' />
+          </div>
           <button> Submit </button>
         </form>
+        <p className='already'> Haven't registered yet? <Link href="/register"> Register Now </Link> </p>
       </div>
     </div>
   )
