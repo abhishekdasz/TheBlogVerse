@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 const page = () => {
     const [userInfo, setUserInfo] = useState();
@@ -25,10 +26,13 @@ const page = () => {
   return (
     <div>
         Blogs
-        <button onClick={getBlogs}> Get Blogs </button>
+        <Link href='/newBlog'> Create Your New Blog </Link>
         {
             userInfo && userInfo.map((elem)=>(
-                <p key={elem._id}> title: {elem.title} </p>
+                <div key={elem._id}>
+                    <h4> title: {elem.title}  </h4>
+                    <p> description: {elem.description} </p> 
+                </div>
             ))
         }
         <p> {userInfo?.title} </p>

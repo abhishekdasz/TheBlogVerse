@@ -1,8 +1,10 @@
 'use client'
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const page = () => {
+    const router = useRouter();
 
     const [blogsData, setBlogsData] = useState({
         title:'', description:''
@@ -20,6 +22,7 @@ const page = () => {
             const res = await axios.post('/api/blogs', blogsData);
             const createdBlogs = res.data;
             console.log(createdBlogs);
+            router.push('/blogs')
         }
         catch(error)
         {
