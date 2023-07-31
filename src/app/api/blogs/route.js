@@ -26,7 +26,7 @@ export async function GET()
     try 
     {
         await dbConnect();
-        const blogs = await BlogsModel.find();
+        const blogs = await BlogsModel.find().populate('userInfo');
         return NextResponse.json({blogs});
     }
     catch(error)

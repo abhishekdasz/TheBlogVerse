@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import BlogsCard from '@/app/components/BlogsCard';
 
 const page = () => {
     const [userInfo, setUserInfo] = useState();
@@ -19,11 +20,13 @@ const page = () => {
         }
     };
 
+    const [loginUserId, setLoginUserId] = useState();
     const handleLoginUser = async () =>{
         try 
         {
             const res = await axios.get('/api/loginUserDetails');
-            console.log(res.data);
+            setLoginUserId(res.data.data._id)
+            console.log(res.data.data._id);
         }
         catch(error)
         {
@@ -40,12 +43,10 @@ const page = () => {
     <div>
         Blogs
         <Link href='/newBlog'> Create Your New Blog </Link>
+        
         {
             userInfo && userInfo.map((elem)=>(
-                <div key={elem._id}>
-                    <h4> title: {elem.title}  </h4>
-                    <p> description: {elem.description} </p> 
-                </div>
+                <BlogsCard key={elem._id} id={elem._id} username={elem.username} title={elem.title} description={elem.description} isUser={elem.userInfo?._id === loginUserId} createdAt={elem.createdAt} /> 
             ))
         }
         <p> {userInfo?.title} </p>
