@@ -21,20 +21,20 @@ export async function POST(req)
     }
 }
 
-// export async function GET()
-// {
-//     try 
-//     {
-//         await dbConnect();
-//         const blogs = await BlogsModel.find();
-//         return NextResponse.json({blogs});
-//     }
-//     catch(error)
-//     {
-//         return NextResponse.json(
-//             {messsage: "Server error"},
-//             {status: 500},
-//         )
-//     }
-// }
+export async function GET()
+{
+    try 
+    {
+        await dbConnect();
+        const blogs = await BlogsModel.find();
+        return NextResponse.json({blogs});
+    }
+    catch(error)
+    {
+        return NextResponse.json(
+            {messsage: "Server error"},
+            {status: 500},
+        )
+    }
+}
 
