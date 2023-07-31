@@ -19,8 +19,21 @@ const page = () => {
         }
     };
 
+    const handleLoginUser = async () =>{
+        try 
+        {
+            const res = await axios.get('/api/loginUserDetails');
+            console.log(res.data);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+
     useEffect(()=>{
         getBlogs();
+        handleLoginUser();
     },[])
  
   return (

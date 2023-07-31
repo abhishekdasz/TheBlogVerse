@@ -6,10 +6,10 @@ export async function POST(req)
 {
     try
     {
-        const { title, description } = await req.json();
+        const { title, description, userInfo } = await req.json();
         await dbConnect();
 
-        await BlogsModel.create({ title, description });
+        await BlogsModel.create({ title, description, userInfo });
         return NextResponse.json({message: 'Blog created successfully'}, {status: 200});
     }
     catch(error)

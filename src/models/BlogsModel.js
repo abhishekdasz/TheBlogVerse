@@ -12,6 +12,11 @@ const blogSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
+        userInfo: {
+          type: mongoose.Types.ObjectId,
+          ref: 'UserModel',
+          required: true,
+        }
     },
     {
         timestamps: true,
