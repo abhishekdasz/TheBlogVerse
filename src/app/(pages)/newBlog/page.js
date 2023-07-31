@@ -1,11 +1,25 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 const page = () => {
     const router = useRouter();
-    const userInfo = '64c7d28704a1c1293e13032b';
+
+    const [userInfo, setUserInfo] = useState();
+    const handleLoginUser = async () =>{
+        try 
+        {
+            const res = await axios.get('/api/loginUserDetails');
+            setUserInfo(res.data.data._id)
+            console.log(res.data.data._id);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    
     const [blogData, setBlogData] = useState({
         title:'', description:''
     })
@@ -16,7 +30,7 @@ const page = () => {
         setBlogData({ ...blogData, [name]: value });
     }
     const userIdAndblogData = {...blogData, userInfo};
-    const handleSubmit = async (e) =>{
+    const handleCreateBlog = async (e) =>{
         e.preventDefault();
         try 
         {
@@ -33,9 +47,12 @@ const page = () => {
             console.log(error);
         }
     }
+    useEffect(()=>{
+        handleLoginUser();
+    },[])
   return (
     <div className='blogs-sec'>
-        <form onSubmit={handleSubmit} className='blogs-container' >
+        <form onSubmit={handleCreateBlog} className='blogs-container' >
             <div className='input'>
                 <label> Enter your Blogs Title: </label>
                 <input type="text" name='title' value={blogData.title} onChange={handleInputs} />

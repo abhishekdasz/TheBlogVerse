@@ -46,7 +46,7 @@ const page = () => {
         
         {
             userInfo && userInfo.map((elem)=>(
-                <BlogsCard key={elem._id} id={elem._id} username={elem.username} title={elem.title} description={elem.description} isUser={elem.userInfo?._id === loginUserId} createdAt={elem.createdAt} /> 
+                <BlogsCard key={elem._id} id={elem._id} username={elem.username} title={elem.title} description={elem.description} isUser={elem.userInfo?._id === loginUserId} createdAt={elem.createdAt} refreshBlogs={getBlogs} /> 
             ))
         }
         <p> {userInfo?.title} </p>

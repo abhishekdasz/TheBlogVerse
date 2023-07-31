@@ -1,8 +1,24 @@
-import Link from 'next/link';
 import React from 'react'
+import Link from 'next/link';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const BlogsCard = (props) => {
-    const { id,username, createdAt, title, description, isUser } = props;
+    const router = useRouter();
+    const { id,username, createdAt, title, description, isUser, refreshBlogs } = props;
+    const handleDelete = async () =>{
+        try
+        {
+            const res = await axios.delete(`/api/blogs/delete/${id}`);
+            console.log(res);
+            alert("Blog deleted successfully");
+            refreshBlogs();
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
   return (
     <div className='blogs-card'>
         <div className="blog-user-details">
@@ -18,7 +34,12 @@ const BlogsCard = (props) => {
         <div className="blog-btns">
             {
             isUser && 
-            ( <Link href={`/editBlog/${id}`}>edit</Link> )
+            ( 
+                <div>
+                    <Link href={`/editBlog/${id}`}>edit</Link> 
+                    <button onClick={handleDelete}> delete </button>
+                </div> 
+            )
             }
         </div>
 
