@@ -400,12 +400,12 @@ button:hover {
   }
 
   .left-h {
-    padding: 0 2rem;
+    padding: 0 1rem;
     text-align: center;
   }
 
   .left-h h1 {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .left-h h2 {
