@@ -28,14 +28,11 @@ const page = () => {
         router.push('/');
         alert("Login succesful");
       }
-      if(res.status === 400)
-      {
-        alert("User doen't exists, please Register first")
-      }
     }
     catch(error)
     {
       console.log(error);
+      alert(error.response.statusText);
     }
   }
   return (

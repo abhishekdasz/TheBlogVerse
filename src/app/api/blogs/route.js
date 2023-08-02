@@ -26,7 +26,7 @@ export async function GET()
     try 
     {
         await dbConnect();
-        const blogs = await BlogsModel.find().populate('userInfo');
+        const blogs = await BlogsModel.find().populate('userInfo').sort({ createdAt: -1 });
         return NextResponse.json({blogs});
     }
     catch(error)

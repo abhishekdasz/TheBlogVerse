@@ -5,6 +5,17 @@ import Link from 'next/link';
 import BlogsCard from '@/app/components/BlogsCard';
 
 const page = () => {
+    const formatTimestamp = (timestamp) => {
+        const dateObj = new Date(timestamp);
+        const formattedDate = dateObj.toLocaleString('en-IN', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        return formattedDate;
+      };
     const [userInfo, setUserInfo] = useState();
     const getBlogs = async () =>{
         try 
@@ -52,7 +63,7 @@ const page = () => {
         <div className="all-blogs-cards">
             {
             userInfo && userInfo.map((elem)=>(
-                <BlogsCard key={elem._id} id={elem._id} username={elem.userInfo?.username} title={elem.title} description={elem.description} isUser={elem.userInfo?._id === loginUserId} createdAt={elem.createdAt} refreshBlogs={getBlogs} /> 
+                <BlogsCard key={elem._id} id={elem._id} username={elem.userInfo?.username} title={elem.title} description={elem.description} isUser={elem.userInfo?._id === loginUserId} createdAt={formatTimestamp(elem.createdAt)} refreshBlogs={getBlogs} /> 
             ))
             }
         </div>

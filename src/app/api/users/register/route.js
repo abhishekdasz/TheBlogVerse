@@ -15,7 +15,7 @@ export async function POST(req)
         {
             return NextResponse.json(
                 { error: "User already exists, please Login" },
-                { status: 400 }
+                { status: 404, statusText:'User already exists, please Login' }
             )
         }
 
@@ -30,7 +30,7 @@ export async function POST(req)
     {
         return NextResponse.json(
             {messsage: "Server error"},
-            {status: 500},
+            {status: 500, statusText:'Server error'},
         )
     }
 }

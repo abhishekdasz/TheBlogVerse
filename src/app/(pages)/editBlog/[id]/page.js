@@ -4,6 +4,10 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+import dynamic from 'next/dynamic'; // Import dynamic for dynamic import of ReactQuill
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false }); // Dynamic import for ReactQuill
+import 'react-quill/dist/quill.snow.css'; // Import the styles for the editor
+
 const page = ({params}) => {
     const router = useRouter();
     const id = params.id;
@@ -51,10 +55,26 @@ const page = ({params}) => {
             <p> Revise and enhance your existing blog post with new ideas and updates. Edit your blog title and content below, and click 'Update Blog' to save your changes and share your updated post with the world. </p>
             <form onSubmit={handleUpdate} className='create-edit-blog-form'>
                 <div className="create-edit-blogs-inputs">
+                    <label> Edit your Blogs Title: </label>
                     <input type="text"  name='title' value={inputs.title} onChange={handleInputs}/>
                 </div>
                 <div className='create-edit-blogs-inputs'>
-                    <textarea name='description' value={inputs.description} onChange={handleInputs}/>
+                    <label> Edit your Blogs Description: </label>
+                    <ReactQuill value={inputs.description} onChange={(value) => setInputs({ ...inputs, description: value })}placeholder='Start writing your blog here...' modules={{
+                toolbar: 
+                {
+                  container: 
+                  [
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    ['bold', 'italic', 'underline'],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'align': [] }],
+                    ['link', 'image'],
+                    ['clean'],
+                    [{ 'color': [] }]
+                  ],
+                },
+              }}/>
                 </div>
                 <div className="create-edit-blog-btns">
                     <button className='create-edit-btn'> Update </button>

@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #292b2f; /* Dark background color */
+  background-color: #080809; /* Dark background color */
 }
 
 .reg-container, .login-container {
@@ -91,7 +91,7 @@ button:hover {
 /* Styling for the Blogs Page */
 .all-blogs-sec {
   min-height: 100vh;
-  background-color: #292b2f; 
+  background-color: #080809; 
   color: #fff;
 }
 .all-blogs-container
@@ -148,6 +148,12 @@ button:hover {
   margin-top: 15px;
 }
 
+.blog-post img 
+{
+  max-width: 100%;
+  min-width: 100%;
+}
+
 .blog-btns {
   margin-top: 15px;
 }
@@ -195,14 +201,16 @@ button:hover {
 /* Styling for the Create Blog Page */
 .create-edit-blog-sec {
   min-height: 100vh;
-  background-color: #292b2f; /* Dark background color */
+  background-color: #080809; /* Dark background color */
   color: #fff; /* White text color */
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .create-edit-blog-container {
   max-width: 600px;
-  margin: 0 auto;
+
   padding: 20px;
   background-color: #fff; 
   color: black;
@@ -215,7 +223,6 @@ button:hover {
 }
 
 .create-edit-blog-container p {
-  margin-bottom: 20px;
   line-height: 1.5rem;
 }
 
@@ -289,4 +296,142 @@ button:hover {
 .ql-container.ql-snow
 {
   height: 200px;
+}
+
+/* custom-tooltip.css */
+.react-quill-container .ql-tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  pointer-events: none;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.react-quill-container .ql-toolbar .ql-tooltip:hover:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.react-quill-container .ql-toolbar .ql-tooltip:hover .ql-tooltip {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+.home-section
+{
+  background-color: #080809;
+  color: #fff;
+}
+.home-container
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+.left-h
+{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-h .contents
+{
+  padding: 0 5rem;
+}
+.left-h h1
+{
+  font-size: 50px;
+}
+.left-h h2
+{
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 2.5rem;
+}
+.left-h .hero-btns 
+{
+  display: flex;
+  gap: 2rem;
+}
+.left-h .hero-btn
+{
+  background: #632aa2;
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.right-h
+{
+  flex: 1;
+}
+.right-h img 
+{
+  max-width: 600px;
+}
+
+
+/* HomePage.module.css */
+/* ... (existing CSS) */
+
+@media screen and (max-width: 768px) {
+  .home-container {
+    flex-direction: column-reverse; /* Stack elements vertically on smaller screens */
+  }
+
+  .left-h {
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .left-h h1 {
+    font-size: 36px;
+  }
+
+  .left-h h2 {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .left-h .contents {
+    padding: 0;
+  }
+
+  /* .left-h .hero-btns {
+    margin-top: 1rem;
+  } */
+
+  .left-h .hero-btn {
+    width: 100%; /* Make buttons full width on smaller screens */
+  }
+
+  .right-h {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .right-h img {
+    max-width: 100%; /* Make the image responsive */
+  }
 }

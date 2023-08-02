@@ -16,7 +16,7 @@ export async function POST(req)
         {
             return NextResponse.json(
                 { error: "User doen't exists, please Register first" },
-                { status: 400 }
+                { status: 404, statusText:'User does not exist, please Register first' }
             )
         }
 
@@ -25,8 +25,8 @@ export async function POST(req)
         if (!validPassword) 
         {
             return NextResponse.json(
-                { message: "Invalid Password" },
-                { status: 400 }
+                { error: "Invalid Password" },
+                { status: 401, statusText:'Invalid Password' }
             );
         } 
         // create token data
@@ -54,7 +54,7 @@ export async function POST(req)
     {
         return NextResponse.json(
             {messsage: "Server error"},
-            {status: 500},
+            {status: 500, statusText:'Server error'},
         )
     }
 }

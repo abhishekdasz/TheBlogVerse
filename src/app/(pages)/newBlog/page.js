@@ -1,25 +1,26 @@
 'use client'
-// pages/newBlog.js
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import dynamic from 'next/dynamic'; // Import dynamic for dynamic import of ReactQuill
 
+import dynamic from 'next/dynamic'; // Import dynamic for dynamic import of ReactQuill
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false }); // Dynamic import for ReactQuill
 import 'react-quill/dist/quill.snow.css'; // Import the styles for the editor
 
 const NewBlog = () => {
   const router = useRouter();
-
   const [userInfo, setUserInfo] = useState();
   const handleLoginUser = async () => {
-    try {
+    try 
+    {
       const res = await axios.get('/api/loginUserDetails');
       setUserInfo(res.data.data._id);
       console.log(res.data.data._id);
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       console.log(error);
     }
   };
@@ -39,7 +40,8 @@ const NewBlog = () => {
 
   const handleCreateBlog = async (e) => {
     e.preventDefault();
-    try {
+    try 
+    {
       console.log(blogData);
       console.log(userIdAndblogData);
       const res = await axios.post('/api/blogs', userIdAndblogData);
@@ -47,7 +49,9 @@ const NewBlog = () => {
       console.log(createdBlogs);
       alert('Blog created successfully');
       router.push('/blogs');
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       console.log(error);
     }
   };
@@ -60,11 +64,8 @@ const NewBlog = () => {
     <div className='create-edit-blog-sec'>
       <div className='create-edit-blog-container'>
         <h2> Create Your Blog Post </h2>
-        <p>
-          Share your ideas, experiences, and stories with the world by creating your very own blog post. Craft your
-          thoughts, express yourself, and inspire others through your writing. Start typing your blog title and content
-          below, press 'Enter' to make a new paragraph and click 'Add Blog' to publish your masterpiece."
-        </p>
+        <p>Share your ideas, experiences, and stories with the world by creating your personalized blog posts. Begin crafting your blog by typing the title and content below. Utilize the toolbox to enhance your blogs with features like bold, italic, bullet points, and more. </p>
+        <p style={{color:'red', marginBottom:'1rem'}}> Note: 'Please upload the image of size less than 1MB' </p>
         <form onSubmit={handleCreateBlog} className='create-edit-blog-form'>
           <div className='create-edit-blogs-inputs'>
             <label> Enter your Blogs Title: </label>
@@ -76,6 +77,21 @@ const NewBlog = () => {
               value={blogData.description}
               onChange={(value) => setBlogData({ ...blogData, description: value })}
               placeholder='Start writing your blog here...'
+              modules={{
+                toolbar: 
+                {
+                  container: 
+                  [
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    ['bold', 'italic', 'underline'],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'align': [] }],
+                    ['link', 'image'],
+                    ['clean'],
+                    [{ 'color': [] }]
+                  ],
+                },
+              }}
             />
           </div>
           <div className='create-edit-blog-btns'>
