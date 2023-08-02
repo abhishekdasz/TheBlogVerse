@@ -132,8 +132,8 @@ button:hover {
 
 /* Styling for the BlogsCard component */
 .blog-card {
-  background-color: #3c3f43; /* Dark card background color */
-  color: #fff; /* White text color */
+  background-color: #fff;
+  color: black;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -204,7 +204,8 @@ button:hover {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #3c3f43; /* Dark container background color */
+  background-color: #fff; 
+  color: black;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -235,15 +236,16 @@ button:hover {
 }
 
 .create-edit-blogs-inputs input[type="text"],
-.create-edit-blogs-inputs textarea {
+.create-edit-blogs-inputs textarea 
+{
   padding: 10px;
-  border: none;
-  background-color: #202124; /* Dark input background color */
-  color: #fff; /* White text color */
+  background-color: #fff;
+  color: black;
   border-radius: 5px;
   font-size: 16px;
   resize: vertical;
   width: 96%;
+  border: 1px solid #80808078;
 }
 
 .create-edit-blogs-inputs textarea {
@@ -279,3 +281,12 @@ button:hover {
 
 
 
+/* quill-custom-styles.css */
+.ql-toolbar {
+   /* Change the color of the button text */
+  background-color: #fff; /* Change the background color of the toolbar */
+}
+.ql-container.ql-snow
+{
+  height: 200px;
+}

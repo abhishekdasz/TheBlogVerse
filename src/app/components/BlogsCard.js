@@ -28,7 +28,7 @@ const BlogsCard = (props) => {
         
         <div className="blog-post">
             <h3> Title: {title} </h3>
-            <p> Description: {description} </p>
+            <div dangerouslySetInnerHTML={{ __html: description }} />
         </div>
         
         <div className="blog-btns">
